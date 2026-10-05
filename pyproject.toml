@@ -1,0 +1,27 @@
+[project]
+name = "automl"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pytest (>=8.0.0)",
+    "scikit-learn (>=1.5.0)",
+    "pandas (>=2.0.0)",
+    "numpy (>=1.26.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pre-commit (>=4.6.2,<5.0.0)",
+    "ruff (>=0.16.10,<0.17.0)",
+    "black (>=26.10.0,<27.0.0)"
+]

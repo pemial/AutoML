@@ -3,18 +3,19 @@ from pipeline import create_pipeline
 from train import train_model
 from predict import model_predict
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import recall_score, classification_report
+from sklearn.metrics import classification_report
 
 
+df = load_data("data/heart.csv")
 
-df = load_data('data/heart.csv')
+X = df.drop(columns=["HeartDisease"])
+y = df["HeartDisease"]
 
-X = df.drop(columns=['HeartDisease'])
-y = df['HeartDisease']
-
-categorial_features = X.select_dtypes(['object']).columns
-numeric_features = X.select_dtypes(['number']).columns
-pipeline = create_pipeline(categorical_features=categorial_features, numeric_features=numeric_features)
+categorial_features = X.select_dtypes(["object"]).columns
+numeric_features = X.select_dtypes(["number"]).columns
+pipeline = create_pipeline(
+    categorical_features=categorial_features, numeric_features=numeric_features
+)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.2)
 train_model(pipeline, X_train, y_train)
